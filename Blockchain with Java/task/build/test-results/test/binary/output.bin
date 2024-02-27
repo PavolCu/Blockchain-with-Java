@@ -1,0 +1,84 @@
+[1;31m
+Start test 1[0m
+Block:
+Id: 1
+Timestamp: 1709055408073
+Hash of the previous block:
+0
+Hash of the block:
+A139b5a348b3a20144b62d99c0890a6bb09ccd267a0f7025a2c6ba414503c700b
+
+Block:
+Id: 2
+Timestamp: 1709055408080
+Hash of the previous block:
+A139b5a348b3a20144b62d99c0890a6bb09ccd267a0f7025a2c6ba414503c700b
+Hash of the block:
+Ac0fb27e015a7f893593709cdd21da50d9a25201c1ceac7fa12359a415a295288
+
+Block:
+Id: 3
+Timestamp: 1709055408080
+Hash of the previous block:
+Ac0fb27e015a7f893593709cdd21da50d9a25201c1ceac7fa12359a415a295288
+Hash of the block:
+A7ac2790d738051b3861d27a0313f4844e5b89a6624c70fb3349901e7f2a3d694
+
+Block:
+Id: 4
+Timestamp: 1709055408080
+Hash of the previous block:
+A7ac2790d738051b3861d27a0313f4844e5b89a6624c70fb3349901e7f2a3d694
+Hash of the block:
+A7a39e5e067cfca3e7715201821f9b84852eddfd78e7ba88826c18491b3da43d6
+
+Block:
+Id: 5
+Timestamp: 1709055408080
+Hash of the previous block:
+A7a39e5e067cfca3e7715201821f9b84852eddfd78e7ba88826c18491b3da43d6
+Hash of the block:
+A40c42e3ecf4e5dfa0e101b0c69733b031f4155cabecc7c5fd1b3c58d7ea722e9
+
+[1;31m
+Start test 2[0m
+Block:
+Id: 1
+Timestamp: 1709055408177
+Hash of the previous block:
+0
+Hash of the block:
+A3a98c42a129c5763d8b3a5cec9cc0cbe1249de420df8cb2dfe5851c9f8057ac8
+
+Block:
+Id: 2
+Timestamp: 1709055408178
+Hash of the previous block:
+A3a98c42a129c5763d8b3a5cec9cc0cbe1249de420df8cb2dfe5851c9f8057ac8
+Hash of the block:
+Abd43fa2644960be3e414e3b11de871980b1c8f1ad87d31330e90eb1c3a851c9f
+
+Block:
+Id: 3
+Timestamp: 1709055408179
+Hash of the previous block:
+Abd43fa2644960be3e414e3b11de871980b1c8f1ad87d31330e90eb1c3a851c9f
+Hash of the block:
+A8a9133153171c9310dd63681abfd47c520bdd82a08f43ddc681964bbcf91ce56
+
+Block:
+Id: 4
+Timestamp: 1709055408179
+Hash of the previous block:
+A8a9133153171c9310dd63681abfd47c520bdd82a08f43ddc681964bbcf91ce56
+Hash of the block:
+Afd25dca23aa33af91521953b1629573741c818dca0d1fb7081b32578de7bb1b4
+
+Block:
+Id: 5
+Timestamp: 1709055408179
+Hash of the previous block:
+Afd25dca23aa33af91521953b1629573741c818dca0d1fb7081b32578de7bb1b4
+Hash of the block:
+Af327b3af19e694454328111be626e5508cd21183407d8b8f3372ba1b1bbb6e29
+
