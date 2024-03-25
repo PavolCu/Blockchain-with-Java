@@ -208,9 +208,9 @@ files:
   - name: src/blockchain/StringUtil.java
     visible: true
     learner_created: true
-feedback_link: https://hyperskill.org/projects/50/stages/271/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5413#comment
 status: Solved
 feedback:
   message: Congratulations!
-  time: "Tue, 27 Feb 2024 17:36:48 UTC"
-record: -1
+  time: "Tue, 27 Feb 2024 17:47:37 UTC"
+record: 1

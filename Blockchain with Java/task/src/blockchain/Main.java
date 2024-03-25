@@ -1,8 +1,13 @@
 package blockchain;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Blockchain blockchain = new Blockchain();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter how many zeros the hash must start with: ");
+        int difficulty = scanner.nextInt();
+        Blockchain blockchain = new Blockchain(difficulty);
         for (int i = 0; i < 4; i++) {
             blockchain.addBlock();
         }

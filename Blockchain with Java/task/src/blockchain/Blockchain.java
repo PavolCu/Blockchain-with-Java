@@ -5,16 +5,22 @@ import java.util.List;
 
 public class Blockchain {
     List<Block> blocks;
+    int difficulty;
 
-    public Blockchain() {
+    public Blockchain(int difficulty) {
+        this.difficulty = difficulty;
         blocks = new ArrayList<>();
-        blocks.add(new Block(1, "0"));
+        Block genesisBlock = new Block(1, "0");
+        genesisBlock.mineBlock(difficulty);
+        blocks.add(genesisBlock);
     }
 
     public void addBlock() {
         int newId = blocks.size() + 1;
         String prevHash = blocks.get(blocks.size() - 1).hash;
-        blocks.add(new Block(newId, prevHash));
+        Block newBlock = new Block(newId, prevHash);
+        newBlock.mineBlock(difficulty);
+        blocks.add(newBlock);
     }
 
     public boolean isValid() {
@@ -33,3 +39,4 @@ public class Blockchain {
         return true;
     }
 }
+
