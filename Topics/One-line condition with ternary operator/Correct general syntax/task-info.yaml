@@ -1,0 +1,23 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: condition <b>?</b> trueCase <b>:</b> elseCase<b>;</b>
+  - text: <b>if</b> condition <b>?</b> trueCase <b>:</b> elseCase<b>;</b>
+  - text: trueCase <b>:</b> elseCase <b>?</b> condition<b>;</b>
+  - text: <b>if</b> condition <b>?</b> trueCase <b>else</b> elseCase<b>;</b>
+files:
+  - name: src/Task.java
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      public class Task {
+        public static void main(String[] args) {
+          // put your code here
+        }
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/3275#comment
+status: Solved
+record: -1
+local_check: false

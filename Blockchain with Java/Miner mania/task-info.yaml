@@ -252,6 +252,143 @@ files:
           }
       }
     learner_created: false
-feedback_link: https://hyperskill.org/projects/50/stages/273/implement#comment
-status: Unchecked
+  - name: src/blockchain/StringUtil.java
+    visible: true
+    text: |-
+      package blockchain;
+      
+      
+      import java.security.MessageDigest;
+      
+      class StringUtil {
+          /* Applies Sha256 to a string and returns a hash. */
+          public static String applySha256(String input){
+              try {
+                  MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                  /* Applies sha256 to our input */
+                  byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                  StringBuilder hexString = new StringBuilder();
+                  for (byte elem: hash) {
+                      String hex = Integer.toHexString(0xff & elem);
+                      if(hex.length() == 1) hexString.append('0');
+                      hexString.append(hex);
+                  }
+                  return hexString.toString();
+              }
+              catch(Exception e) {
+                  throw new RuntimeException(e);
+              }
+          }
+      }
+    learner_created: true
+  - name: src/blockchain/Blockchain.java
+    visible: true
+    text: |+
+      package blockchain;
+      
+      import java.util.ArrayList;
+      import java.util.List;
+      
+      public class Blockchain {
+          List<Block> blocks;
+          int difficulty;
+      
+          public Blockchain(int difficulty) {
+              this.difficulty = difficulty;
+              blocks = new ArrayList<>();
+              Block genesisBlock = new Block(1, "0");
+              genesisBlock.mineBlock(difficulty);
+              blocks.add(genesisBlock);
+          }
+      
+          public void addBlock() {
+              int newId = blocks.size() + 1;
+              String prevHash = blocks.get(blocks.size() - 1).hash;
+              Block newBlock = new Block(newId, prevHash);
+              newBlock.mineBlock(difficulty);
+              blocks.add(newBlock);
+          }
+      
+          public boolean isValid() {
+              for (int i = 1; i < blocks.size(); i++) {
+                  Block currentBlock = blocks.get(i);
+                  Block previousBlock = blocks.get(i - 1);
+      
+                  if (!currentBlock.hash.equals(currentBlock.calculateHash())) {
+                      return false;
+                  }
+      
+                  if (!currentBlock.prevHash.equals(previousBlock.hash)) {
+                      return false;
+                  }
+              }
+              return true;
+          }
+      }
+    
+    learner_created: true
+  - name: src/blockchain/Block.java
+    visible: true
+    text: |-
+      package blockchain;
+      
+      import java.security.MessageDigest;
+      import java.util.Date;
+      import java.util.Random;
+      
+      public class Block {
+          int id;
+          long timestamp;
+          String prevHash;
+          String hash;
+          int magicNumber;
+          long generationTime;
+      
+          public Block(int id, String prevHash) {
+              this.id = id;
+              this.timestamp = new Date().getTime();
+              this.prevHash = prevHash;
+              this.magicNumber = new Random().nextInt();
+              this.hash = calculateHash();
+          }
+      
+          public String calculateHash() {
+              return StringUtil.applySha256(id + Long.toString(timestamp) + prevHash + magicNumber);
+          }
+      
+          public void mineBlock(int difficulty) {
+              String target = new String(new char[difficulty]).replace('\0', '0');
+              long startTime = System.currentTimeMillis();
+              while (!hash.substring(0, difficulty).equals(target)) {
+                  magicNumber++;
+                  hash = calculateHash();
+              }
+              long endTime = System.currentTimeMillis();
+              generationTime = (endTime - startTime) / 1000; // convert to seconds
+          }
+      
+          @Override
+          public String toString() {
+              return String.format("""
+                      Block:
+                      Id: %d
+                      Timestamp: %d
+                      Magic number: %d
+                      Hash of the previous block:\u0020
+                      %s
+                      Hash of the block:\u0020
+                      %s
+                      Block was generating for %d seconds
+                      """, id, timestamp, magicNumber, prevHash, hash, generationTime);
+          }
+      }
+    learner_created: true
+  - name: src/blockchain/Miner.java
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/5415#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 15 Apr 2024 20:37:07 UTC"
 record: -1

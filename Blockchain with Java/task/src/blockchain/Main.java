@@ -2,15 +2,23 @@ package blockchain;
 
 public class Main {
     public static void main(String[] args) {
-        Blockchain blockchain = new Blockchain();
-        for (int i = 0; i < 4; i++) {
-            blockchain.addBlock();
+        int minerId = 1;
+        int magicNumber = 0;
+        long generationTime = 0;
+        int nValue = 0;
+
+        Blockchain blockchain = new Blockchain(minerId, magicNumber, generationTime, nValue);
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(new Miner(i, blockchain)).start();
+        }
+
+        while (blockchain.blocks.size() < 5) {
+            Thread.yield();
         }
 
         for (Block block : blockchain.blocks) {
             System.out.println(block);
         }
-
-        //System.out.println("Blockchain is valid: " + blockchain.isValid());
     }
 }

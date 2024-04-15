@@ -1,0 +1,23 @@
+type: code
+files:
+  - name: src/Main.java
+    visible: true
+    text: |-
+      import java.util.Scanner;
+      
+      public class Main {
+          public static void main(String[] args) {
+              Scanner scanner = new Scanner(System.in);
+              // Read the input number
+              int number = scanner.nextInt();
+      
+              // Write a one-line condition using ternary operator to check if the number is even or odd
+              // If the number is even, print "even"
+              // Otherwise, print "odd"
+          }
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/43304#comment
+status: Solved
+record: -1
+submission_language: java17

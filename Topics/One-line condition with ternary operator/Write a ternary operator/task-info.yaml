@@ -1,0 +1,23 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: "int d = a + b == c ? 10 : c;"
+  - text: "int d = c : 10 ? a + b == c;"
+  - text: "int d = a + b != c ? 10 : c;"
+  - text: "int d = a + b == c ? c : a + b;"
+files:
+  - name: src/Task.java
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      public class Task {
+        public static void main(String[] args) {
+          // put your code here
+        }
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/3268#comment
+status: Solved
+record: -1
+local_check: false
