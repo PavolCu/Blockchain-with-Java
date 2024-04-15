@@ -287,6 +287,263 @@ files:
           }
       }
     learner_created: false
+  - name: src/blockchain/StringUtil.java
+    visible: true
+    text: |-
+      package blockchain;
+      
+      
+      import java.security.MessageDigest;
+      
+      class StringUtil {
+          /* Applies Sha256 to a string and returns a hash. */
+          public static String applySha256(String input){
+              try {
+                  MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                  /* Applies sha256 to our input */
+                  byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                  StringBuilder hexString = new StringBuilder();
+                  for (byte elem: hash) {
+                      String hex = Integer.toHexString(0xff & elem);
+                      if(hex.length() == 1) hexString.append('0');
+                      hexString.append(hex);
+                  }
+                  return hexString.toString();
+              }
+              catch(Exception e) {
+                  throw new RuntimeException(e);
+              }
+          }
+      }
+    learner_created: true
+  - name: src/blockchain/Blockchain.java
+    visible: true
+    text: |-
+      package blockchain;
+      
+      import java.util.ArrayList;
+      import java.util.List;
+      
+      public class Blockchain {
+          List<Block> blocks;
+          int N = 0;
+      
+          public Blockchain(int minerId, int magicNumber, long generationTime, int nValue) {
+              blocks = new ArrayList<>();
+              blocks.add(new Block(1, "0", minerId, magicNumber, generationTime, nValue));
+          }
+      
+          public synchronized void addBlockSynchronized(Block block) {
+              if (isValidNewBlock(block)) {
+                  blocks.add(block);
+                  adjustN(block.getGenerationTime());
+              }
+          }
+      
+          public boolean isValidNewBlock(Block newBlock) {
+              Block lastBlock = blocks.get(blocks.size() - 1);
+              return newBlock.getPrevHash().equals(lastBlock.getHash()) && newBlock.getHash().startsWith("0".repeat(N));
+          }
+      
+          public void adjustN(long generationTime) {
+              if (generationTime < 1) {
+                  N++;
+              } else if (generationTime > 2) {
+                  if (N > 0) {
+                      N--;
+                  }
+              }
+          }
+      
+          public int getN() {
+              return N;
+          }
+      
+          public Block getLastBlock() {
+              return blocks.get(blocks.size() - 1);
+          }
+      }
+    learner_created: true
+  - name: src/blockchain/Miner.java
+    visible: true
+    text: |-
+      package blockchain;
+      
+      public class Miner implements Runnable {
+          private int id;
+          private Blockchain blockchain;
+      
+          Miner(int id, Blockchain blockchain) {
+              this.id = id;
+              this.blockchain = blockchain;
+          }
+      
+          @Override
+          public void run() {
+              while (true) {
+                  Block lastBlock = blockchain.getLastBlock();
+                  int newId = lastBlock.getId() + 1;
+                  String prevHash = lastBlock.getHash();
+                  long startTime = System.currentTimeMillis();
+                  int magicNumber = findMagicNumber(prevHash, blockchain.getN());
+                  long generationTime = (System.currentTimeMillis() - startTime) / 1000;
+                  Block newBlock = new Block(newId, prevHash, id, magicNumber, generationTime, blockchain.getN());
+                  blockchain.addBlockSynchronized(newBlock);
+                  if (blockchain.blocks.size() >= 5) {
+                      break;
+                  }
+              }
+          }
+      
+          private int findMagicNumber(String prevHash, int N) {
+              int magicNumber = 0;
+              while (true) {
+                  String hash = StringUtil.applySha256(prevHash + magicNumber);
+                  if (hash.startsWith("0".repeat(N))) {
+                      break;
+                  }
+                  magicNumber++;
+              }
+              return magicNumber;
+          }
+      }
+    learner_created: true
+  - name: src/blockchain/Block.java
+    visible: true
+    text: |-
+      package blockchain;
+      
+      import java.util.Date;
+      
+      public class Block {
+          private int id;
+          private long timestamp;
+          private String prevHash;
+          private String hash;
+          private int minerId;
+          private int magicNumber;
+          private long generationTime;
+          private int nValue;
+      
+          public Block(int id, String prevHash, int minerId, int magicNumber, long generationTime, int nValue) {
+              this.id = id;
+              this.prevHash = prevHash;
+              this.timestamp = new Date().getTime();
+              this.minerId = minerId;
+              this.magicNumber = magicNumber;
+              this.generationTime = generationTime;
+              this.nValue = nValue;
+              this.hash = calculateHash();
+          }
+      
+          public String calculateHash() {
+              return StringUtil.applySha256(id + prevHash + timestamp + minerId + magicNumber + generationTime + nValue);
+              // Implementation of hash calculation...
+          }
+      
+      
+          public String getHash() {
+              return this.hash;
+          }
+      
+          public String getPrevHash() {
+              return this.prevHash;
+          }
+      
+          public long getGenerationTime() {
+              return this.generationTime;
+          }
+      
+          public int getId() {
+              return this.id;
+          }
+      
+          @Override
+          public String toString() {
+              return "Block:\n" +
+                      "Created by miner # " + minerId + "\n" +
+                      "Id: " + id + "\n" +
+                      "Timestamp: " + timestamp + "\n" +
+                      "Magic number: " + magicNumber + "\n" +
+                      "Hash of the previous block:\n" +
+                      prevHash + "\n" +
+                      "Hash of the block:\n" +
+                      hash + "\n" +
+                      "Block was generating for " + generationTime + " seconds\n" +
+                      "N was increased to " + nValue + "\n";
+          }
+      }
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/50/stages/274/implement#comment
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    Every block should contain at least 12 lines of data
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    Block:
+    Created by miner # 1
+    Id: 1
+    Timestamp: 1713214036863
+    Magic number: 0
+    Hash of the previous block:
+    0
+    Hash of the block:
+    6e74b81f5ae907b77b4dbd6184ce1e7ad641722203032d0383d715c9494c8ce8
+    Block was generating for 0 seconds
+    N was increased to 0
+
+    Block:
+    Created by miner # 5
+    Id: 2
+    Timestamp: 1713214036887
+    Magic number: 0
+    Hash of the previous block:
+    6e74b81f5ae907b77b4dbd6184ce1e7ad641722203032d0383d715c9494c8ce8
+    Hash of the block:
+    5b7ee8eb33325828e8895d7689b147bf0734a4536fe60f7c216dd1c225508f49
+    Block was generating for 0 seconds
+    N was increased to 0
+
+    Block:
+    Created by miner # 5
+    Id: 3
+    Timestamp: 1713214036888
+    Magic number: 1
+    Hash of the previous block:
+    5b7ee8eb33325828e8895d7689b147bf0734a4536fe60f7c216dd1c225508f49
+    Hash of the block:
+    08346108f2a30e0e2ec8d9e6a1f39d8e371b26127e23bcd3c97d9520935b4f60
+    Block was generating for 0 seconds
+    N was increased to 1
+
+    Block:
+    Created by miner # 5
+    Id: 4
+    Timestamp: 1713214038711
+    Magic number: 752
+    Hash of the previous block:
+    08346108f2a30e0e2ec8d9e6a1f39d8e371b26127e23bcd3c97d9520935b4f60
+    Hash of the block:
+    00f64e79833a521c6d3f45605b6eb986ffab97dda621d39424b5f07de0140ded
+    Block was generating for 0 seconds
+    N was increased to 2
+
+    Block:
+    Created by miner # 8
+    Id: 5
+    Timestamp: 1713214044547
+    Magic number: 4699
+    Hash of the previous block:
+    00f64e79833a521c6d3f45605b6eb986ffab97dda621d39424b5f07de0140ded
+    Hash of the block:
+    000f55ed8cb46e5dabd76dddfd68458e617d263527fa18424a7d0e3613f3078d
+    Block was generating for 0 seconds
+    N was increased to 3
+  time: "Mon, 15 Apr 2024 20:47:25 UTC"
+record: 4
