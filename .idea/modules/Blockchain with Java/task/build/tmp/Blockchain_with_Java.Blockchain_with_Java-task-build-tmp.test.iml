@@ -4,6 +4,10 @@
     <output-test url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/out/test/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/src/test" />
+    <content url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/src/test" />
+    <content url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/test" isTestSource="true" />
+    </content>
     <content url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/test">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../../Blockchain with Java/task/build/tmp/test" isTestSource="true" />
     </content>

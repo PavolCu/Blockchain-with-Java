@@ -4,6 +4,7 @@
     <output url="file://$MODULE_DIR$/../../../../../../../../../Blockchain with Java/task/build/generated/sources/annotationProcessor/java/out/production/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../../../../../../Blockchain with Java/task/build/generated/sources/annotationProcessor/java/src" />
+    <content url="file://$MODULE_DIR$/../../../../../../../../../Blockchain with Java/task/build/generated/sources/annotationProcessor/java/src" />
     <orderEntry type="jdk" jdkName="corretto-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

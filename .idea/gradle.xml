@@ -21,14 +21,34 @@
             <option value="$PROJECT_DIR$/Topics/Command/Participants" />
             <option value="$PROJECT_DIR$/Topics/Command/Real-world examples" />
             <option value="$PROJECT_DIR$/Topics/Command/Remote control" />
+            <option value="$PROJECT_DIR$/Topics/Command/Stock broker" />
+            <option value="$PROJECT_DIR$/Topics/Command/Stock broker (1)" />
             <option value="$PROJECT_DIR$/Topics/Command/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Command/Type of design pattern" />
+            <option value="$PROJECT_DIR$/Topics/Command/Type of design pattern (1)" />
+            <option value="$PROJECT_DIR$/Topics/Command/Undo command" />
             <option value="$PROJECT_DIR$/Topics/Command/Use cases" />
+            <option value="$PROJECT_DIR$/Topics/Facade/Cinema Facade" />
+            <option value="$PROJECT_DIR$/Topics/Facade/Definition" />
+            <option value="$PROJECT_DIR$/Topics/Facade/Log Search Facade" />
+            <option value="$PROJECT_DIR$/Topics/Facade/Theory" />
             <option value="$PROJECT_DIR$/Topics/Inner classes/Improve your vehicle" />
             <option value="$PROJECT_DIR$/Topics/Inner classes/Nested or inner" />
             <option value="$PROJECT_DIR$/Topics/Inner classes/Theory" />
             <option value="$PROJECT_DIR$/Topics/Inner classes/Why do we need inner classes" />
             <option value="$PROJECT_DIR$/Topics/Memento/Roll back" />
             <option value="$PROJECT_DIR$/Topics/Memento/Theory" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Check if a given number is equal to 10" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Correct general syntax" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Determining if an integer is odd or even" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Double ternary operator" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Find the maximum of two numbers" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Given two variables" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Rewriting a conditional statement" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/The max of the longs" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Theory" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/What does the double ternary operator do" />
+            <option value="$PROJECT_DIR$/Topics/One-line condition with ternary operator/Write a ternary operator" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

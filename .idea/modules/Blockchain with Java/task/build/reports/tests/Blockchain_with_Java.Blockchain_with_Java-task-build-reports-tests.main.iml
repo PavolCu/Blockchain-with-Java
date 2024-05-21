@@ -4,6 +4,7 @@
     <output url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/reports/tests/out/production/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/reports/tests/src" />
+    <content url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/reports/tests/src" />
     <orderEntry type="jdk" jdkName="corretto-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

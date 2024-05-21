@@ -7,6 +7,11 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/classes/java/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/classes/java/out" />
     </content>
+    <content url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/classes/java">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/classes/java/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/classes/java/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../../../Blockchain with Java/task/build/classes/java/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
