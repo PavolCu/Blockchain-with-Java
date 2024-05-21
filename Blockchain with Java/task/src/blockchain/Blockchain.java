@@ -6,6 +6,7 @@ import java.util.List;
 public class Blockchain {
     List<Block> blocks;
     int N = 0;
+    private List<String> pendingMessages = new ArrayList<>();
 
     public Blockchain(int minerId, int magicNumber, long generationTime, int nValue) {
         blocks = new ArrayList<>();
@@ -15,8 +16,13 @@ public class Blockchain {
     public synchronized void addBlockSynchronized(Block block) {
         if (isValidNewBlock(block)) {
             blocks.add(block);
+            pendingMessages.clear();
             adjustN(block.getGenerationTime());
         }
+    }
+
+    public synchronized void addMessage(String message) {
+        pendingMessages.add(message);
     }
 
     public boolean isValidNewBlock(Block newBlock) {
