@@ -32,15 +32,15 @@ public class Miner implements Runnable {
         }
     }
 
-    private int findMagicNumber(String prevHash, int N) {
-        int magicNumber = 0;
-        while (true) {
-            String hash = StringUtil.applySha256(prevHash + magicNumber);
-            if (hash.startsWith("0".repeat(N))) {
-                break;
-            }
-            magicNumber++;
+   private int findMagicNumber(String prevHash, int N) {
+    int magicNumber = 0;
+    while (true) {
+        String hash = StringUtil.applySha256(prevHash + magicNumber);
+        if (hash.startsWith("0".repeat(N))) {
+            break;
         }
-        return magicNumber;
+        magicNumber++;
     }
+    return magicNumber;
+}
 }

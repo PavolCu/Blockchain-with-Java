@@ -1,10 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-05-22T20:42:43" hostname="MBPuzivaCuninka.home" time="15.259">
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-05-22T21:06:32" hostname="MBPuzivaCuninka.home" time="3.684">
   <properties/>
-  <testcase name="start" classname="BlockchainTest" time="15.259">
-    <failure message="java.lang.AssertionError: Error in test #1&#10;&#10;In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop." type="java.lang.AssertionError">java.lang.AssertionError: Error in test #1
+  <testcase name="start" classname="BlockchainTest" time="3.684">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;All blocks contain the same data!&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 1&#10;Timestamp: 1716411992869&#10;Magic number: 0&#10;Hash of the previous block:&#10;0&#10;Hash of the block:&#10;d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 0&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 2&#10;Timestamp: 1716411992898&#10;Magic number: 0&#10;Hash of the previous block:&#10;d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351&#10;Hash of the block:&#10;5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 0&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 3&#10;Timestamp: 1716411992950&#10;Magic number: 25&#10;Hash of the previous block:&#10;5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000&#10;Hash of the block:&#10;025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 1&#10;&#10;Block:&#10;Created by miner # 5&#10;Id: 4&#10;Timestamp: 1716411993045&#10;Magic number: 75&#10;Hash of the previous block:&#10;025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a&#10;Hash of the block:&#10;00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 2&#10;&#10;Block:&#10;Created by miner # 2&#10;Id: 5&#10;Timestamp: 1716411995884&#10;Magic number: 5921&#10;Hash of the previous block:&#10;00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280&#10;Hash of the block:&#10;000ef56b37bdfe275674cef778e93bd286e5551cc41b82701c2ffbe13fbc7ccc&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 3" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
-In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.
+All blocks contain the same data!
+
+Please find below the output of your program during this failed test.
+
+---
+
+Block:
+Created by miner # 1
+Id: 1
+Timestamp: 1716411992869
+Magic number: 0
+Hash of the previous block:
+0
+Hash of the block:
+d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 0
+
+Block:
+Created by miner # 1
+Id: 2
+Timestamp: 1716411992898
+Magic number: 0
+Hash of the previous block:
+d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+Hash of the block:
+5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 0
+
+Block:
+Created by miner # 1
+Id: 3
+Timestamp: 1716411992950
+Magic number: 25
+Hash of the previous block:
+5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+Hash of the block:
+025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 1
+
+Block:
+Created by miner # 5
+Id: 4
+Timestamp: 1716411993045
+Magic number: 75
+Hash of the previous block:
+025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+Hash of the block:
+00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 2
+
+Block:
+Created by miner # 2
+Id: 5
+Timestamp: 1716411995884
+Magic number: 5921
+Hash of the previous block:
+00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+Hash of the block:
+000ef56b37bdfe275674cef778e93bd286e5551cc41b82701c2ffbe13fbc7ccc
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 3
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -54,6 +128,76 @@ In this test, the program is running for a long time, more than 15 seconds. Most
   </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
+Block:
+Created by miner # 1
+Id: 1
+Timestamp: 1716411992869
+Magic number: 0
+Hash of the previous block:
+0
+Hash of the block:
+d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 0
+
+Block:
+Created by miner # 1
+Id: 2
+Timestamp: 1716411992898
+Magic number: 0
+Hash of the previous block:
+d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+Hash of the block:
+5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 0
+
+Block:
+Created by miner # 1
+Id: 3
+Timestamp: 1716411992950
+Magic number: 25
+Hash of the previous block:
+5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+Hash of the block:
+025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 1
+
+Block:
+Created by miner # 5
+Id: 4
+Timestamp: 1716411993045
+Magic number: 75
+Hash of the previous block:
+025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+Hash of the block:
+00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 2
+
+Block:
+Created by miner # 2
+Id: 5
+Timestamp: 1716411995884
+Magic number: 5921
+Hash of the previous block:
+00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+Hash of the block:
+000ef56b37bdfe275674cef778e93bd286e5551cc41b82701c2ffbe13fbc7ccc
+Block data:
+no messages
+Block was generating for 0 seconds
+N was increased to 3
+
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
