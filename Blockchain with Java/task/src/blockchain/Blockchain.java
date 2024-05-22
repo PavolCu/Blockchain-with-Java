@@ -10,7 +10,7 @@ public class Blockchain {
 
     public Blockchain(int minerId, int magicNumber, long generationTime, int nValue) {
         blocks = new ArrayList<>();
-        blocks.add(new Block(1, "0", minerId, magicNumber, generationTime, nValue));
+        blocks.add(new Block(1, "0", minerId, magicNumber, generationTime, nValue, new ArrayList<>()));
     }
 
     public synchronized void addBlockSynchronized(Block block) {
@@ -45,6 +45,11 @@ public class Blockchain {
     }
 
     public Block getLastBlock() {
+
         return blocks.get(blocks.size() - 1);
+    }
+
+    public synchronized List<String> getPendingMessages() {
+        return new ArrayList<>(pendingMessages);
     }
 }

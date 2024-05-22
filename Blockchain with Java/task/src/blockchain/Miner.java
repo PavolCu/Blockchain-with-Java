@@ -1,5 +1,10 @@
 package blockchain;
 
+import java.util.List;
+
+
+
+
 public class Miner implements Runnable {
     private int id;
     private Blockchain blockchain;
@@ -18,7 +23,8 @@ public class Miner implements Runnable {
             long startTime = System.currentTimeMillis();
             int magicNumber = findMagicNumber(prevHash, blockchain.getN());
             long generationTime = (System.currentTimeMillis() - startTime) / 1000;
-            Block newBlock = new Block(newId, prevHash, id, magicNumber, generationTime, blockchain.getN());
+            List<String> messages = blockchain.getPendingMessages();
+            Block newBlock = new Block(newId, prevHash, id, magicNumber, generationTime, blockchain.getN(), messages)   ;
             blockchain.addBlockSynchronized(newBlock);
             if (blockchain.blocks.size() >= 5) {
                 break;
