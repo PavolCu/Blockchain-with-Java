@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-05-22T21:06:32" hostname="MBPuzivaCuninka.home" time="3.684">
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-05-23T20:34:38" hostname="macbook-pro-uzivatela-cuninka.home" time="3.146">
   <properties/>
-  <testcase name="start" classname="BlockchainTest" time="3.684">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;All blocks contain the same data!&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 1&#10;Timestamp: 1716411992869&#10;Magic number: 0&#10;Hash of the previous block:&#10;0&#10;Hash of the block:&#10;d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 0&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 2&#10;Timestamp: 1716411992898&#10;Magic number: 0&#10;Hash of the previous block:&#10;d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351&#10;Hash of the block:&#10;5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 0&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 3&#10;Timestamp: 1716411992950&#10;Magic number: 25&#10;Hash of the previous block:&#10;5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000&#10;Hash of the block:&#10;025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 1&#10;&#10;Block:&#10;Created by miner # 5&#10;Id: 4&#10;Timestamp: 1716411993045&#10;Magic number: 75&#10;Hash of the previous block:&#10;025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a&#10;Hash of the block:&#10;00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 2&#10;&#10;Block:&#10;Created by miner # 2&#10;Id: 5&#10;Timestamp: 1716411995884&#10;Magic number: 5921&#10;Hash of the previous block:&#10;00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280&#10;Hash of the block:&#10;000ef56b37bdfe275674cef778e93bd286e5551cc41b82701c2ffbe13fbc7ccc&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 3" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+  <testcase name="start" classname="BlockchainTest" time="3.146">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;All blocks contain the same data!&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 1&#10;Timestamp: 1716496478825&#10;Magic number: 0&#10;Hash of the previous block:&#10;0&#10;Hash of the block:&#10;72c83ebdc0c34de52909d7c18f5861d07e14c01715ec208220974f93da2685ff&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 0&#10;&#10;Block:&#10;Created by miner # 1&#10;Id: 2&#10;Timestamp: 1716496478858&#10;Magic number: 0&#10;Hash of the previous block:&#10;72c83ebdc0c34de52909d7c18f5861d07e14c01715ec208220974f93da2685ff&#10;Hash of the block:&#10;73b8dff47f630b3d3e29e1905ee219ea3857fb0a217a456db8ff42767576490a&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 0&#10;&#10;Block:&#10;Created by miner # 2&#10;Id: 3&#10;Timestamp: 1716496478862&#10;Magic number: 1&#10;Hash of the previous block:&#10;73b8dff47f630b3d3e29e1905ee219ea3857fb0a217a456db8ff42767576490a&#10;Hash of the block:&#10;0892ceef762b14a4bc16ae39f662061b408bd4991e90a42e137d2c684979f823&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 1&#10;&#10;Block:&#10;Created by miner # 5&#10;Id: 4&#10;Timestamp: 1716496480436&#10;Magic number: 689&#10;Hash of the previous block:&#10;0892ceef762b14a4bc16ae39f662061b408bd4991e90a42e137d2c684979f823&#10;Hash of the block:&#10;0006eae0ed80c74d0ae8427372edf4c589edffce756b005aa08847e48204fb58&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 2&#10;&#10;Block:&#10;Created by miner # 9&#10;Id: 5&#10;Timestamp: 1716496481402&#10;Magic number: 357&#10;Hash of the previous block:&#10;0006eae0ed80c74d0ae8427372edf4c589edffce756b005aa08847e48204fb58&#10;Hash of the block:&#10;0007e277febaccec344bc8c7a5153af51e552106a1aa20347cc369c6c80bb2fb&#10;Block data:&#10;no messages&#10;Block was generating for 0 seconds&#10;N was increased to 3" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
 All blocks contain the same data!
 
@@ -13,12 +13,12 @@ Please find below the output of your program during this failed test.
 Block:
 Created by miner # 1
 Id: 1
-Timestamp: 1716411992869
+Timestamp: 1716496478825
 Magic number: 0
 Hash of the previous block:
 0
 Hash of the block:
-d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+72c83ebdc0c34de52909d7c18f5861d07e14c01715ec208220974f93da2685ff
 Block data:
 no messages
 Block was generating for 0 seconds
@@ -27,26 +27,26 @@ N was increased to 0
 Block:
 Created by miner # 1
 Id: 2
-Timestamp: 1716411992898
+Timestamp: 1716496478858
 Magic number: 0
 Hash of the previous block:
-d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+72c83ebdc0c34de52909d7c18f5861d07e14c01715ec208220974f93da2685ff
 Hash of the block:
-5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+73b8dff47f630b3d3e29e1905ee219ea3857fb0a217a456db8ff42767576490a
 Block data:
 no messages
 Block was generating for 0 seconds
 N was increased to 0
 
 Block:
-Created by miner # 1
+Created by miner # 2
 Id: 3
-Timestamp: 1716411992950
-Magic number: 25
+Timestamp: 1716496478862
+Magic number: 1
 Hash of the previous block:
-5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+73b8dff47f630b3d3e29e1905ee219ea3857fb0a217a456db8ff42767576490a
 Hash of the block:
-025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+0892ceef762b14a4bc16ae39f662061b408bd4991e90a42e137d2c684979f823
 Block data:
 no messages
 Block was generating for 0 seconds
@@ -55,26 +55,26 @@ N was increased to 1
 Block:
 Created by miner # 5
 Id: 4
-Timestamp: 1716411993045
-Magic number: 75
+Timestamp: 1716496480436
+Magic number: 689
 Hash of the previous block:
-025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+0892ceef762b14a4bc16ae39f662061b408bd4991e90a42e137d2c684979f823
 Hash of the block:
-00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+0006eae0ed80c74d0ae8427372edf4c589edffce756b005aa08847e48204fb58
 Block data:
 no messages
 Block was generating for 0 seconds
 N was increased to 2
 
 Block:
-Created by miner # 2
+Created by miner # 9
 Id: 5
-Timestamp: 1716411995884
-Magic number: 5921
+Timestamp: 1716496481402
+Magic number: 357
 Hash of the previous block:
-00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+0006eae0ed80c74d0ae8427372edf4c589edffce756b005aa08847e48204fb58
 Hash of the block:
-000ef56b37bdfe275674cef778e93bd286e5551cc41b82701c2ffbe13fbc7ccc
+0007e277febaccec344bc8c7a5153af51e552106a1aa20347cc369c6c80bb2fb
 Block data:
 no messages
 Block was generating for 0 seconds
@@ -131,12 +131,12 @@ Start test 1?[0m
 Block:
 Created by miner # 1
 Id: 1
-Timestamp: 1716411992869
+Timestamp: 1716496478825
 Magic number: 0
 Hash of the previous block:
 0
 Hash of the block:
-d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+72c83ebdc0c34de52909d7c18f5861d07e14c01715ec208220974f93da2685ff
 Block data:
 no messages
 Block was generating for 0 seconds
@@ -145,26 +145,26 @@ N was increased to 0
 Block:
 Created by miner # 1
 Id: 2
-Timestamp: 1716411992898
+Timestamp: 1716496478858
 Magic number: 0
 Hash of the previous block:
-d1f1e0c2dc8a2055be6f9680308dff5a9135d0bbcc31442af977a318cac22351
+72c83ebdc0c34de52909d7c18f5861d07e14c01715ec208220974f93da2685ff
 Hash of the block:
-5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+73b8dff47f630b3d3e29e1905ee219ea3857fb0a217a456db8ff42767576490a
 Block data:
 no messages
 Block was generating for 0 seconds
 N was increased to 0
 
 Block:
-Created by miner # 1
+Created by miner # 2
 Id: 3
-Timestamp: 1716411992950
-Magic number: 25
+Timestamp: 1716496478862
+Magic number: 1
 Hash of the previous block:
-5379aa5c7a7e090e38cab71d707cff34ae1bb04692779cac22510c2aff9bb000
+73b8dff47f630b3d3e29e1905ee219ea3857fb0a217a456db8ff42767576490a
 Hash of the block:
-025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+0892ceef762b14a4bc16ae39f662061b408bd4991e90a42e137d2c684979f823
 Block data:
 no messages
 Block was generating for 0 seconds
@@ -173,26 +173,26 @@ N was increased to 1
 Block:
 Created by miner # 5
 Id: 4
-Timestamp: 1716411993045
-Magic number: 75
+Timestamp: 1716496480436
+Magic number: 689
 Hash of the previous block:
-025377dc9a34434ca45feeaccb07c9bc8dae223ba23517f28e0cb774e8e7f47a
+0892ceef762b14a4bc16ae39f662061b408bd4991e90a42e137d2c684979f823
 Hash of the block:
-00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+0006eae0ed80c74d0ae8427372edf4c589edffce756b005aa08847e48204fb58
 Block data:
 no messages
 Block was generating for 0 seconds
 N was increased to 2
 
 Block:
-Created by miner # 2
+Created by miner # 9
 Id: 5
-Timestamp: 1716411995884
-Magic number: 5921
+Timestamp: 1716496481402
+Magic number: 357
 Hash of the previous block:
-00c1d6979fd5cfc225703d44b3dcbd7dc069623802f6b51f6dbe77b4b38c9280
+0006eae0ed80c74d0ae8427372edf4c589edffce756b005aa08847e48204fb58
 Hash of the block:
-000ef56b37bdfe275674cef778e93bd286e5551cc41b82701c2ffbe13fbc7ccc
+0007e277febaccec344bc8c7a5153af51e552106a1aa20347cc369c6c80bb2fb
 Block data:
 no messages
 Block was generating for 0 seconds

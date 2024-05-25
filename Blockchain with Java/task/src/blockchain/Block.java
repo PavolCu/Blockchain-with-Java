@@ -12,25 +12,23 @@ public class Block {
     private int magicNumber;
     private long generationTime;
     private int nValue;
-    private List<String> message;
+    private List<Message> messages;
 
-    public Block(int id, String prevHash, int minerId, int magicNumber, long generationTime, int nValue, List<String> message) {
-        this.id = id;
-        this.prevHash = prevHash;
-        this.timestamp = new Date().getTime();
-        this.minerId = minerId;
-        this.magicNumber = magicNumber;
-        this.generationTime = generationTime;
-        this.nValue = nValue;
-        this.hash = calculateHash();
-        this.message = message;
-    }
+    public Block(int id, String prevHash, int minerId, int magicNumber, long generationTime, int nValue, List<Message> messages) {
+    this.id = id;
+    this.prevHash = prevHash;
+    this.timestamp = new Date().getTime();
+    this.minerId = minerId;
+    this.magicNumber = magicNumber;
+    this.generationTime = generationTime;
+    this.nValue = nValue;
+    this.hash = calculateHash();
+    this.messages = messages;
+}
 
     public String calculateHash() {
         return StringUtil.applySha256(id + prevHash + timestamp + minerId + magicNumber + generationTime + nValue);
-        // Implementation of hash calculation...
     }
-
 
     public String getHash() {
         return this.hash;
@@ -45,12 +43,16 @@ public class Block {
     }
 
     public int getId() {
-
         return this.id;
     }
 
     @Override
     public String toString() {
+        StringBuilder messagesString = new StringBuilder();
+        for (Message message : messages) {
+            messagesString.append(message.toString()).append("\n");
+        }
+
         return "Block:\n" +
                 "Created by miner # " + minerId + "\n" +
                 "Id: " + id + "\n" +
@@ -61,7 +63,7 @@ public class Block {
                 "Hash of the block:\n" +
                 hash + "\n" +
                 "Block data:\n" +
-                (message.isEmpty() ? "no messages" : String.join("\n", message)) + "\n" +
+                (messages.isEmpty() ? "no messages" : messagesString.toString()) +
                 "Block was generating for " + generationTime + " seconds\n" +
                 "N was increased to " + nValue + "\n";
     }

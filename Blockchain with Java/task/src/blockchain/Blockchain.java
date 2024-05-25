@@ -6,7 +6,7 @@ import java.util.List;
 public class Blockchain {
     List<Block> blocks;
     int N = 0;
-    private List<String> pendingMessages = new ArrayList<>();
+    private List<Message> pendingMessages = new ArrayList<>();
 
     public Blockchain(int minerId, int magicNumber, long generationTime, int nValue) {
         blocks = new ArrayList<>();
@@ -21,7 +21,7 @@ public class Blockchain {
         }
     }
 
-    public synchronized void addMessage(String message) {
+    public synchronized void addMessage(Message message) {
         pendingMessages.add(message);
     }
 
@@ -45,11 +45,12 @@ public class Blockchain {
     }
 
     public Block getLastBlock() {
-
         return blocks.get(blocks.size() - 1);
     }
 
-    public synchronized List<String> getPendingMessages() {
-        return new ArrayList<>(pendingMessages);
+    public synchronized List<Message> getAndClearMessages() {
+        List<Message> messages = new ArrayList<>(pendingMessages);
+        pendingMessages.clear();
+        return messages;
     }
 }

@@ -1,13 +1,14 @@
 package blockchain;
 
+
 import java.util.List;
 
 
 
 
 public class Miner implements Runnable {
-    private int id;
-    private Blockchain blockchain;
+    private final int id;
+    private final Blockchain blockchain;
 
     Miner(int id, Blockchain blockchain) {
         this.id = id;
@@ -23,16 +24,16 @@ public class Miner implements Runnable {
             long startTime = System.currentTimeMillis();
             int magicNumber = findMagicNumber(prevHash, blockchain.getN());
             long generationTime = (System.currentTimeMillis() - startTime) / 1000;
-            List<String> messages = blockchain.getPendingMessages();
-            Block newBlock = new Block(newId, prevHash, id, magicNumber, generationTime, blockchain.getN(), messages)   ;
+            List<Message> messages = blockchain.getAndClearMessages();
+            Block newBlock = new Block(newId, prevHash, id, magicNumber, generationTime, blockchain.getN(), messages);
             blockchain.addBlockSynchronized(newBlock);
-            if (blockchain.blocks.size() >= 5) {
+            if (blockchain.blocks.size() == 5) {
                 break;
-            }
         }
     }
+}
 
-   private int findMagicNumber(String prevHash, int N) {
+private int findMagicNumber(String prevHash, int N) {
     int magicNumber = 0;
     while (true) {
         String hash = StringUtil.applySha256(prevHash + magicNumber);
@@ -42,5 +43,5 @@ public class Miner implements Runnable {
         magicNumber++;
     }
     return magicNumber;
-}
+    }
 }
