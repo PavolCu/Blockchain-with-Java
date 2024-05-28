@@ -14,12 +14,12 @@ public class Blockchain {
     }
 
     public synchronized void addBlockSynchronized(Block block) {
-        if (isValidNewBlock(block)) {
-            blocks.add(block);
-            pendingMessages.clear();
-            adjustN(block.getGenerationTime());
-        }
+    if (isValidNewBlock(block)) {
+        adjustN(block.getGenerationTime());
+        blocks.add(block);
+        pendingMessages.clear();
     }
+}
 
     public synchronized void addMessage(Message message) {
         pendingMessages.add(message);
@@ -48,9 +48,14 @@ public class Blockchain {
         return blocks.get(blocks.size() - 1);
     }
 
-    public synchronized List<Message> getAndClearMessages() {
-        List<Message> messages = new ArrayList<>(pendingMessages);
-        pendingMessages.clear();
-        return messages;
+
+
+    public synchronized Message getMessage() {
+        if (pendingMessages.isEmpty()) {
+            return null;
+        }
+        return pendingMessages.remove(0);
     }
+
+
 }

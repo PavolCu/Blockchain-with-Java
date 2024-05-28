@@ -11,23 +11,27 @@ public class User implements Runnable {
         this.blockchain = blockchain;
     }
    private Message generateMessage() {
+
         return new Message(name, "Message " + random.nextInt(1000));
    }
 
-    @Override
-    public void run() {
-        // Here you can add the logic for sending messages to the blockchain.
+ @Override
+public void run() {
+    long startTime = System.currentTimeMillis();
+    while (blockchain.blocks.size() < 5) {
+        // If more than 15 seconds have passed, break the loop
+        if (System.currentTimeMillis() - startTime > 15000) {
+            break;
+        }
+        Message message = generateMessage();
+        blockchain.addMessage(message);
 
-        while (true) {
-            Message message = generateMessage();
-            blockchain.addMessage(message);
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-               Thread.currentThread().interrupt();
-               break;
-            }
+        try {
+            Thread.sleep(100); // Reduce sleep time
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            break;
         }
     }
+}
 }

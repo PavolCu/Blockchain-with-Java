@@ -46,6 +46,10 @@ public class Block {
         return this.id;
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
     @Override
     public String toString() {
         StringBuilder messagesString = new StringBuilder();
