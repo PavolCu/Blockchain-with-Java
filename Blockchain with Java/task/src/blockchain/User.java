@@ -1,37 +1,32 @@
 package blockchain;
-import java.util.Random;
+
+import java.util.List;
 
 public class User implements Runnable {
     private String name;
     private Blockchain blockchain;
-    private Random random = new Random();
+    private final int id;
+    private final List<String> messages;
 
-    public User(String name, Blockchain blockchain) {
+    public User(String name, Blockchain blockchain, int id, List<String> messages) {
         this.name = name;
         this.blockchain = blockchain;
+        this.id = id;
+        this.messages = messages;
     }
-   private Message generateMessage() {
 
-        return new Message(name, "Message " + random.nextInt(1000));
-   }
+    @Override
+    public void run() {
+        for (String messageText : messages) {
+            Message message = new Message(name, messageText);
+            blockchain.addMessage(message);
 
- @Override
-public void run() {
-    long startTime = System.currentTimeMillis();
-    while (blockchain.blocks.size() < 5) {
-        // If more than 15 seconds have passed, break the loop
-        if (System.currentTimeMillis() - startTime > 15000) {
-            break;
-        }
-        Message message = generateMessage();
-        blockchain.addMessage(message);
-
-        try {
-            Thread.sleep(100); // Reduce sleep time
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            break;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
         }
     }
-}
 }
