@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-06-02T18:51:14" hostname="macbook-pro-uzivatela-cuninka.home" time="15.329">
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-06-14T19:40:55" hostname="macbook-pro-uzivatela-cuninka.home" time="15.221">
   <properties/>
-  <testcase name="start" classname="BlockchainTest" time="15.329">
+  <testcase name="start" classname="BlockchainTest" time="15.221">
     <failure message="java.lang.AssertionError: Error in test #1&#10;&#10;In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop." type="java.lang.AssertionError">java.lang.AssertionError: Error in test #1
 
 In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.

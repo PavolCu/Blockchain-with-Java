@@ -1,45 +1,59 @@
 package blockchain;
 
-import java.util.Arrays;
+
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.*;
 
 public class Main {
+    private static final Object lock = new Object();
+
     public static void main(String[] args) {
         int minerId = 1;
         int magicNumber = 0;
         long generationTime = 0;
         int nValue = 2;
-
-        Blockchain blockchain = new Blockchain(minerId, magicNumber, generationTime, nValue);
-
-        List<String> tomMessages = Arrays.asList("Hey, I'm first!", "You're welcome :)");
-        List<String> sarahMessages = Arrays.asList("It's not fair!", "You always will be first because it is your blockchain!", "Anyway, thank you for this amazing chat.");
-        List<String> nickMessages = Arrays.asList("Hey Tom, nice chat");
-
-        new Thread(new User("Tom", blockchain, 0, tomMessages)).start();
-        new Thread(new User("Sarah", blockchain, 1, sarahMessages)).start();
-        new Thread(new User("Nick", blockchain, 2, nickMessages)).start();
-
-        for (int i = 0; i < 5; i++) { // Change this line
-            new Thread(new Miner(i, blockchain)).start();
-        }
-
-        long startTime = System.currentTimeMillis();
         long timeout = 15000;
 
-        synchronized (blockchain) {
-            while (blockchain.blocks.size() < 5) { // Change this line
-                try {
-                    blockchain.wait(timeout);
-                    if (System.currentTimeMillis() - startTime > timeout) {
-                        System.out.println("Timeout reached, stopping the program.");
-                        break;
-                    }
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    break;
-                }
+        Blockchain blockchain = new Blockchain(minerId, magicNumber, generationTime, nValue, lock);
+
+        List<String> tomMessages = new LinkedList<>(List.of("Hey, I'm first!"));
+        List<String> sarahMessages = new LinkedList<>(List.of("It's not fair!", "You always will be first because it is your blockchain!", "Anyway, thank you for this amazing chat."));
+        List<String> nickMessages = new LinkedList<>(List.of("You're welcome :)", "Hey Tom, nice chat"));
+        CountDownLatch latch = new CountDownLatch(3); // Initialize the latch with the number of User threads
+
+        new Thread(new User("Tom", blockchain, 0, tomMessages, latch)).start();
+        new Thread(new User("Sarah", blockchain, 1, sarahMessages, latch)).start();
+        new Thread(new User("Nick", blockchain, 2, nickMessages, latch)).start();
+
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        ExecutorService minerExecutor = Executors.newFixedThreadPool(5);
+        for (int i = 0; i < 5; i++) {
+            minerExecutor.submit(new Miner(i, blockchain, timeout));
+        }
+
+        try {
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        minerExecutor.shutdownNow();
+
+        try {
+            if (!minerExecutor.awaitTermination(timeout, TimeUnit.MILLISECONDS)) {
+                System.err.println("Miner executor did not terminate in the specified time.");
+                List<Runnable> droppedTasks = minerExecutor.shutdownNow();
+                System.err.println("Miner executor was abruptly shut down. " + droppedTasks.size() + " tasks will not be executed.");
             }
+        } catch (InterruptedException e) {
+            System.err.println("Miner executor termination interrupted.");
+            Thread.currentThread().interrupt();
         }
 
         for (Block block : blockchain.blocks) {

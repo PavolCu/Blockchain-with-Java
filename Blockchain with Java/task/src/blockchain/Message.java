@@ -19,7 +19,6 @@ public class Message {
 
     @Override
     public String toString() {
-
         return name + ": " + text;
     }
 }

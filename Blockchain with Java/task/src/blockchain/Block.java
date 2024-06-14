@@ -15,19 +15,19 @@ public class Block {
     private List<Message> messages;
 
     public Block(int id, String prevHash, int minerId, int magicNumber, long generationTime, int nValue, List<Message> messages) {
-    this.id = id;
-    this.prevHash = prevHash;
-    this.timestamp = new Date().getTime();
-    this.minerId = minerId;
-    this.magicNumber = magicNumber;
-    this.generationTime = generationTime;
-    this.nValue = nValue;
-    this.hash = calculateHash();
-    this.messages = messages;
-}
+        this.id = id;
+        this.prevHash = prevHash;
+        this.timestamp = new Date().getTime();
+        this.minerId = minerId;
+        this.magicNumber = magicNumber;
+        this.generationTime = generationTime;
+        this.nValue = nValue;
+        this.messages = messages != null ? messages : List.of(); // Ensure messages is never null
+        this.hash = calculateHash();
+    }
 
     public String calculateHash() {
-        return StringUtil.applySha256(id + prevHash + timestamp + minerId + magicNumber + generationTime + nValue);
+        return StringUtil.applySha256(id + prevHash + timestamp + minerId + magicNumber + generationTime + nValue + messages.toString());
     }
 
     public String getHash() {
@@ -69,6 +69,6 @@ public class Block {
                 "Block data:\n" +
                 (messages.isEmpty() ? "no messages" : messagesString.toString()) +
                 "Block was generating for " + generationTime + " seconds\n" +
-                "N was increased to " + nValue + "\n";
+                (generationTime < 1 ? "N was increased to " : "N stays the same ") + nValue + "\n";
     }
 }

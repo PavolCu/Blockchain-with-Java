@@ -1,47 +1,51 @@
 package blockchain;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Blockchain {
     List<Block> blocks;
     int N = 0;
-    private BlockingDeque<Message> pendingMessages = new LinkedBlockingDeque<>();
+    private final ConcurrentLinkedQueue<Message> nextBlockMessages = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<Message> currentBlockMessages = new ConcurrentLinkedQueue<>();
 
-    public Blockchain(int minerId, int magicNumber, long generationTime, int nValue) {
-        blocks = new ArrayList<>();
-        blocks.add(new Block(1, "0", minerId, magicNumber, generationTime, nValue, new ArrayList<>()));
+    private final Object lock;
+    private Block lastBlock;
+
+    public Blockchain(int minerId, int magicNumber, long generationTime, int nValue, Object lock) {
+        this.lock = lock;
+        blocks = new LinkedList<>();
+        lastBlock = new Block(0, "0", minerId, magicNumber, generationTime, nValue, new LinkedList<>());
+        blocks.add(lastBlock);
     }
 
-   public synchronized boolean addBlockSynchronized(Block block) {
-    if (isValidNewBlock(block)) {
-        adjustN(block.getGenerationTime());
-        blocks.add(block);
-        pendingMessages.clear();
-        return true;
-    }
-    return false;
-}
-
-    public synchronized void addMessage(Message message) {
-
-        pendingMessages.add(message);
+    public synchronized boolean addBlockSynchronized(Block block) {
+        if (isValidNewBlock(block)) {
+            adjustN(block.getGenerationTime());
+            lastBlock = block;
+            blocks.add(block);
+            nextBlockMessages.addAll(currentBlockMessages);
+            currentBlockMessages.clear();
+            lock.notifyAll();
+            return true;
+        }
+        return false;
     }
 
-    public synchronized List<Message> getAndClearPendingMessages() {
-        List<Message> messages = new ArrayList<>(pendingMessages);
-        pendingMessages.clear();
+    public synchronized Queue<Message> getAndClearNextBlockMessages() {
+        Queue<Message> messages = new LinkedList<>(nextBlockMessages);
+        nextBlockMessages.clear();
         return messages;
     }
 
-    public List<Message> getPendingMessages() {
-        // Return a new list containing all elements from pendingMessages
-        return new ArrayList<>(pendingMessages);
+    public synchronized void addMessage(Message message) {
+        currentBlockMessages.add(message);
     }
+
     public boolean isValidNewBlock(Block newBlock) {
-        Block lastBlock = blocks.get(blocks.size() - 1);
         return newBlock.getPrevHash().equals(lastBlock.getHash()) && newBlock.getHash().startsWith("0".repeat(N));
     }
 
@@ -62,6 +66,4 @@ public class Blockchain {
     public Block getLastBlock() {
         return blocks.get(blocks.size() - 1);
     }
-
-
 }

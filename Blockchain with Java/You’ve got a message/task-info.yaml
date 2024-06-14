@@ -24,6 +24,9 @@ files:
   - name: src/blockchain/Message.java
     visible: true
     learner_created: true
+  - name: src/blockchain/MagicNumberFinder.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5416#comment
 status: Failed
 feedback:
@@ -31,5 +34,5 @@ feedback:
     Error in test #1
 
     In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.
-  time: "Sun, 02 Jun 2024 18:51:31 UTC"
+  time: "Fri, 14 Jun 2024 19:41:11 UTC"
 record: 4

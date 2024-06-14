@@ -3,3 +3,4 @@ content:
   - Memento
   - Command
   - Facade
+  - LocalDate
