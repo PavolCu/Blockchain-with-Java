@@ -1,0 +1,24 @@
+<div class="step-text">
+<p>You have the following public classes:</p>
+<ul>
+<li><code class="language-java">A</code> (default package)</li>
+<li><code class="language-java">org.demo.B</code></li>
+<li><code class="language-java">org.demo.mypackage.C</code></li>
+</ul>
+<p>In the body of the class <code class="language-java">org.demo.B</code>, you'd like to use other classes for writing fields:</p>
+<pre><code class="language-java">package org.demo;
+
+class B {
+
+    B b = new B(); // (1)
+
+    C c1 = new org.demo.mypackage.C();  // (2)
+
+    org.demo.mypackage.C c2 = new org.demo.mypackage.C(); // (3)
+
+    mypackage.C c3 = new mypackage.C(); // (4)
+
+    A a = new A(); // (5)
+}</code></pre>
+<p>Select all correct lines (see the number in the comments).</p>
+</div>

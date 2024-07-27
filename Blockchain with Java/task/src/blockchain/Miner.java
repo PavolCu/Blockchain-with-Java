@@ -1,91 +1,54 @@
 package blockchain;
 
-//import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-
 
 public class Miner implements Runnable {
     private final int id;
     private final Blockchain blockchain;
-    private final long timeout; // Define timeout here
-    private volatile boolean running = true;
+    private final Object lock;
 
-    Miner(int id, Blockchain blockchain, long timeout) {
+    public Miner(int id, Blockchain blockchain, Object lock) {
         this.id = id;
         this.blockchain = blockchain;
-        this.timeout = timeout;
+        this.lock = lock;
     }
 
-    private int findMagicNumber(String prevHash, int N) {
-        int cores = Runtime.getRuntime().availableProcessors();
-        ExecutorService executor = Executors.newFixedThreadPool(cores);
-
-        List<Future<Integer>> futures = new LinkedList<>();
-        int range = Integer.MAX_VALUE / cores;
-        for (int i = 0; i < cores; i++) {
-            int start = i * range;
-            int end = (i + 1) * range;
-            futures.add(executor.submit(new MagicNumberFinder(prevHash, start, end, N)));
-        }
-
-        try {
-            for (Future<Integer> future : futures) {
-                int magicNumber = future.get();
-                if (magicNumber != -1) {
-                    executor.shutdownNow();
-                    return magicNumber;
-                }
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        } finally {
-            executor.shutdown();
-        }
-
-        return -1;
-    }
-
-    public void stop() {
-        running = false;
-    }
     @Override
     public void run() {
-        long startTime = System.currentTimeMillis();
-
-        while (running) {
+        while (blockchain.isMining() && blockchain.getSize() < 5) {
             Block lastBlock = blockchain.getLastBlock();
-            int newId = lastBlock.getId() + 1;
-            String prevHash = lastBlock.getHash();
-            int magicNumber = findMagicNumber(prevHash, blockchain.getN());
-            long generationTime = (System.currentTimeMillis() - startTime) / 1000;
-
-            // Wait for a short time to allow messages to accumulate
-            try {
-                Thread.sleep(300); // Wait for 200 milliseconds
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+            List<String> messages = blockchain.getMessages();
+            int magicNumber = findMagicNumber(lastBlock.getHash(), blockchain.getN(), messages);
+            if (!blockchain.isMining()) {
+                break;
             }
-
-            Queue<Message> messages = blockchain.getAndClearNextBlockMessages();
-            Block newBlock = new Block(newId, prevHash, id, magicNumber, generationTime, blockchain.getN(), new LinkedList<>(messages));
-
-            if (blockchain.addBlockSynchronized(newBlock)) {
+            long generationTime = System.currentTimeMillis();
+            Block newBlock = new Block(lastBlock.getId() + 1, lastBlock.getHash(), id, magicNumber, generationTime, blockchain.getN(), messages);
+            if (blockchain.addBlock(newBlock)) {
                 System.out.println(newBlock);
-                if (blockchain.blocks.size() >= 5) {
-                    stop();
+                synchronized (lock) {
+                    lock.notifyAll();
                 }
             }
-
-            if (System.currentTimeMillis() - startTime > timeout) {
-                System.out.println("Timeout reached, stopping the miner.");
-                stop();
+        }
+        synchronized (lock) {
+            if (!blockchain.isMining() || blockchain.getSize() == 5) {
+                blockchain.stopMining();
+                lock.notifyAll();
             }
         }
+    }
+
+    private int findMagicNumber(String prevHash, int N, List<String> messages) {
+        int magicNumber = 0;
+        String targetPrefix = "0".repeat(N);
+        String baseData = prevHash + messages.toString();
+        while (!StringUtil.applySha256(baseData + magicNumber).startsWith(targetPrefix)) {
+            magicNumber++;
+            if (!blockchain.isMining()) {
+                break;
+            }
+        }
+        return magicNumber;
     }
 }

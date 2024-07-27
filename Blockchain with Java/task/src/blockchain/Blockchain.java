@@ -1,69 +1,110 @@
 package blockchain;
 
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 public class Blockchain {
-    List<Block> blocks;
-    int N = 0;
-    private final ConcurrentLinkedQueue<Message> nextBlockMessages = new ConcurrentLinkedQueue<>();
-    private final ConcurrentLinkedQueue<Message> currentBlockMessages = new ConcurrentLinkedQueue<>();
+    private final Set<String> messages = new HashSet<>();
+    private final Map<Integer, Integer> minerStats = new HashMap<>();
+    private final List<Block> blocks = new ArrayList<>();
+    private final Lock blockLock = new ReentrantLock();
+    private int N = 0;
+    private volatile boolean isMining = true;
 
-    private final Object lock;
-    private Block lastBlock;
-
-    public Blockchain(int minerId, int magicNumber, long generationTime, int nValue, Object lock) {
-        this.lock = lock;
-        blocks = new LinkedList<>();
-        lastBlock = new Block(0, "0", minerId, magicNumber, generationTime, nValue, new LinkedList<>());
-        blocks.add(lastBlock);
+    public Blockchain() {
+        // The first block, with no messages and a previous hash of "0"
+        blocks.add(new Block(1, "0", 0, 0, System.currentTimeMillis(), 0, new ArrayList<>()));
     }
 
-    public synchronized boolean addBlockSynchronized(Block block) {
-        if (isValidNewBlock(block)) {
-            adjustN(block.getGenerationTime());
-            lastBlock = block;
-            blocks.add(block);
-            nextBlockMessages.addAll(currentBlockMessages);
-            currentBlockMessages.clear();
-            lock.notifyAll();
-            return true;
+    public void addMessage(String message) {
+        synchronized (messages) {
+            if (messages.size() < 4) {
+                messages.add(message);
+            }
         }
-        return false;
     }
 
-    public synchronized Queue<Message> getAndClearNextBlockMessages() {
-        Queue<Message> messages = new LinkedList<>(nextBlockMessages);
-        nextBlockMessages.clear();
-        return messages;
+    public boolean addBlock(Block block) {
+        blockLock.lock();
+        try {
+            if (!isMining || blocks.size() == 5) {
+                isMining = false;
+                return false;
+            }
+            if (isValidNewBlock(block)) {
+                blocks.add(block);
+                adjustN(block.getGenerationTime());
+                synchronized (messages) {
+                    messages.clear();
+                }
+                minerStats.merge(block.getMinerId(), 1, Integer::sum);
+                if (blocks.size() == 5) {
+                    isMining = false;
+                }
+                return true;
+            }
+            return false;
+        } finally {
+            blockLock.unlock();
+        }
     }
 
-    public synchronized void addMessage(Message message) {
-        currentBlockMessages.add(message);
-    }
-
-    public boolean isValidNewBlock(Block newBlock) {
+    private boolean isValidNewBlock(Block newBlock) {
+        Block lastBlock = blocks.get(blocks.size() - 1);
         return newBlock.getPrevHash().equals(lastBlock.getHash()) && newBlock.getHash().startsWith("0".repeat(N));
     }
 
-    public void adjustN(long generationTime) {
-        if (generationTime < 1) {
+    private void adjustN(long generationTime) {
+        if (generationTime < 1000) {
             N++;
-        } else if (generationTime > 2) {
-            if (N > 0) {
-                N--;
-            }
+        } else if (generationTime > 2000 && N > 0) {
+            N--;
         }
+    }
+
+    public List<String> getMessages() {
+        synchronized (messages) {
+            return new ArrayList<>(messages);
+        }
+    }
+
+    public Block getLastBlock() {
+        blockLock.lock();
+        try {
+            return blocks.get(blocks.size() - 1);
+        } finally {
+            blockLock.unlock();
+        }
+    }
+
+    public void stopMining() {
+        isMining = false;
+    }
+
+    public boolean isMining() {
+        return isMining;
+    }
+
+    public int getSize() {
+        return blocks.size();
     }
 
     public int getN() {
         return N;
     }
 
-    public Block getLastBlock() {
-        return blocks.get(blocks.size() - 1);
+    public void printMinerStats() {
+        minerStats.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEach(entry -> System.out.println("Miner " + entry.getKey() + " mined " + entry.getValue() + " blocks"));
+    }
+
+    @Override
+    public String toString() {
+        return blocks.stream()
+                .map(Block::toString)
+                .collect(Collectors.joining("\n"));
     }
 }

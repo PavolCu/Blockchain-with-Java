@@ -1,74 +1,76 @@
 package blockchain;
 
-import java.util.Date;
 import java.util.List;
 
 public class Block {
-    private int id;
-    private long timestamp;
-    private String prevHash;
-    private String hash;
-    private int minerId;
-    private int magicNumber;
-    private long generationTime;
-    private int nValue;
-    private List<Message> messages;
+    private final int id;
+    private final String prevHash;
+    private final int minerId;
+    private final int magicNumber;
+    private final long timestamp;
+    private final int n;
+    private final List<String> messages;
+    private final String hash;
 
-    public Block(int id, String prevHash, int minerId, int magicNumber, long generationTime, int nValue, List<Message> messages) {
+    public Block(int id, String prevHash, int minerId, int magicNumber, long timestamp, int n, List<String> messages) {
         this.id = id;
         this.prevHash = prevHash;
-        this.timestamp = new Date().getTime();
         this.minerId = minerId;
         this.magicNumber = magicNumber;
-        this.generationTime = generationTime;
-        this.nValue = nValue;
-        this.messages = messages != null ? messages : List.of(); // Ensure messages is never null
-        this.hash = calculateHash();
-    }
-
-    public String calculateHash() {
-        return StringUtil.applySha256(id + prevHash + timestamp + minerId + magicNumber + generationTime + nValue + messages.toString());
-    }
-
-    public String getHash() {
-        return this.hash;
-    }
-
-    public String getPrevHash() {
-        return this.prevHash;
-    }
-
-    public long getGenerationTime() {
-        return this.generationTime;
+        this.timestamp = timestamp;
+        this.n = n;
+        this.messages = List.copyOf(messages);
+        this.hash = StringUtil.applySha256(id + prevHash + minerId + magicNumber + timestamp + n + messages.toString()); // MODIFIKÁCIA
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
-    public List<Message> getMessages() {
+    public String getPrevHash() {
+        return prevHash;
+    }
+
+    public int getMinerId() {
+        return minerId;
+    }
+
+    public int getMagicNumber() {
+        return magicNumber;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public List<String> getMessages() {
         return messages;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public long getGenerationTime() {
+        return System.currentTimeMillis() - timestamp;
     }
 
     @Override
     public String toString() {
-        StringBuilder messagesString = new StringBuilder();
-        for (Message message : messages) {
-            messagesString.append(message.toString()).append("\n");
-        }
-
-        return "Block:\n" +
-                "Created by miner # " + minerId + "\n" +
-                "Id: " + id + "\n" +
-                "Timestamp: " + timestamp + "\n" +
-                "Magic number: " + magicNumber + "\n" +
-                "Hash of the previous block:\n" +
-                prevHash + "\n" +
-                "Hash of the block:\n" +
-                hash + "\n" +
-                "Block data:\n" +
-                (messages.isEmpty() ? "no messages" : messagesString.toString()) +
-                "Block was generating for " + generationTime + " seconds\n" +
-                (generationTime < 1 ? "N was increased to " : "N stays the same ") + nValue + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Block:\n");
+        sb.append("Created by miner #").append(minerId).append("\n");
+        sb.append("Id: ").append(id).append("\n");
+        sb.append("Timestamp: ").append(timestamp).append("\n");
+        sb.append("Magic number: ").append(magicNumber).append("\n");
+        sb.append("Hash of the previous block: \n").append(prevHash).append("\n");
+        sb.append("Hash of the block: \n").append(hash).append("\n");
+        sb.append("Block data: ").append(messages.isEmpty() ? "no messages" : String.join("\n", messages)).append("\n");
+        sb.append("Block was generating for ").append(getGenerationTime() / 1000).append(" seconds\n");
+        return sb.toString();
     }
 }

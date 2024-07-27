@@ -1,10 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-06-14T19:40:55" hostname="macbook-pro-uzivatela-cuninka.home" time="15.221">
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-07-27T23:55:09" hostname="macbook-pro-uzivatela-cuninka.home" time="10.89">
   <properties/>
-  <testcase name="start" classname="BlockchainTest" time="15.221">
-    <failure message="java.lang.AssertionError: Error in test #1&#10;&#10;In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop." type="java.lang.AssertionError">java.lang.AssertionError: Error in test #1
+  <testcase name="start" classname="BlockchainTest" time="10.89">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Every block should contain at least 12 lines of data&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Block:&#10;Created by miner #1&#10;Id: 2&#10;Timestamp: 1722124509379&#10;Magic number: 0&#10;Hash of the previous block: &#10;be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28&#10;Hash of the block: &#10;55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5&#10;Block data: no messages&#10;Block was generating for 0 seconds&#10;&#10;Block:&#10;Created by miner #2&#10;Id: 3&#10;Timestamp: 1722124509397&#10;Magic number: 1&#10;Hash of the previous block: &#10;55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5&#10;Hash of the block: &#10;0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0&#10;Block data: Message 1 from user&#10;Block was generating for 0 seconds&#10;&#10;Block:&#10;Created by miner #0&#10;Id: 4&#10;Timestamp: 1722124509943&#10;Magic number: 363&#10;Hash of the previous block: &#10;0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0&#10;Hash of the block: &#10;007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa&#10;Block data: Message 2 from user&#10;Message 3 from user&#10;Message 5 from user&#10;Message 4 from user&#10;Block was generating for 0 seconds&#10;&#10;Block:&#10;Created by miner #3&#10;Id: 5&#10;Timestamp: 1722124519869&#10;Magic number: 1998&#10;Hash of the previous block: &#10;007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa&#10;Hash of the block: &#10;000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0&#10;Block data: Message 11 from user&#10;Message 8 from user&#10;Message 10 from user&#10;Message 9 from user&#10;Block was generating for 0 seconds&#10;&#10;Miner 0 mined 1 blocks&#10;Miner 1 mined 1 blocks&#10;Miner 2 mined 1 blocks&#10;Miner 3 mined 1 blocks&#10;Block:&#10;Created by miner #0&#10;Id: 1&#10;Timestamp: 1722124509360&#10;Magic number: 0&#10;Hash of the previous block: &#10;0&#10;Hash of the block: &#10;be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28&#10;Block data: no messages&#10;Block was generating for 10 seconds&#10;&#10;Block:&#10;Created by miner #1&#10;Id: 2&#10;Timestamp: 1722124509379&#10;Magic number: 0&#10;Hash of the previous block: &#10;be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28&#10;Hash of the block: &#10;55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5&#10;Block data: no messages&#10;Block was generating for 10 seconds&#10;&#10;Block:&#10;Created by miner #2&#10;Id: 3&#10;Timestamp: 1722124509397&#10;Magic number: 1&#10;Hash of the previous block: &#10;55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5&#10;Hash of the block: &#10;0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0&#10;Block data: Message 1 from user&#10;Block was generating for 10 seconds&#10;&#10;Block:&#10;Created by miner #0&#10;Id: 4&#10;Timestamp: 1722124509943&#10;Magic number: 363&#10;Hash of the previous block: &#10;0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0&#10;Hash of the block: &#10;007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa&#10;Block data: Message 2 from user&#10;Message 3 from user&#10;Message 5 from user&#10;Message 4 from user&#10;Block was generating for 9 seconds&#10;&#10;Block:&#10;Created by miner #3&#10;Id: 5&#10;Timestamp: 1722124519869&#10;Magic number: 1998&#10;Hash of the previous block: &#10;007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa&#10;Hash of the block: &#10;000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0&#10;Block data: Message 11 from user&#10;Message 8 from user&#10;Message 10 from user&#10;Message 9 from user&#10;Block was generating for 0 seconds" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
-In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.
+Every block should contain at least 12 lines of data
+
+Please find below the output of your program during this failed test.
+
+---
+
+Block:
+Created by miner #1
+Id: 2
+Timestamp: 1722124509379
+Magic number: 0
+Hash of the previous block: 
+be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28
+Hash of the block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Block data: no messages
+Block was generating for 0 seconds
+
+Block:
+Created by miner #2
+Id: 3
+Timestamp: 1722124509397
+Magic number: 1
+Hash of the previous block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Hash of the block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Block data: Message 1 from user
+Block was generating for 0 seconds
+
+Block:
+Created by miner #0
+Id: 4
+Timestamp: 1722124509943
+Magic number: 363
+Hash of the previous block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Hash of the block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Block data: Message 2 from user
+Message 3 from user
+Message 5 from user
+Message 4 from user
+Block was generating for 0 seconds
+
+Block:
+Created by miner #3
+Id: 5
+Timestamp: 1722124519869
+Magic number: 1998
+Hash of the previous block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Hash of the block: 
+000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0
+Block data: Message 11 from user
+Message 8 from user
+Message 10 from user
+Message 9 from user
+Block was generating for 0 seconds
+
+Miner 0 mined 1 blocks
+Miner 1 mined 1 blocks
+Miner 2 mined 1 blocks
+Miner 3 mined 1 blocks
+Block:
+Created by miner #0
+Id: 1
+Timestamp: 1722124509360
+Magic number: 0
+Hash of the previous block: 
+0
+Hash of the block: 
+be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28
+Block data: no messages
+Block was generating for 10 seconds
+
+Block:
+Created by miner #1
+Id: 2
+Timestamp: 1722124509379
+Magic number: 0
+Hash of the previous block: 
+be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28
+Hash of the block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Block data: no messages
+Block was generating for 10 seconds
+
+Block:
+Created by miner #2
+Id: 3
+Timestamp: 1722124509397
+Magic number: 1
+Hash of the previous block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Hash of the block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Block data: Message 1 from user
+Block was generating for 10 seconds
+
+Block:
+Created by miner #0
+Id: 4
+Timestamp: 1722124509943
+Magic number: 363
+Hash of the previous block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Hash of the block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Block data: Message 2 from user
+Message 3 from user
+Message 5 from user
+Message 4 from user
+Block was generating for 9 seconds
+
+Block:
+Created by miner #3
+Id: 5
+Timestamp: 1722124519869
+Magic number: 1998
+Hash of the previous block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Hash of the block: 
+000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0
+Block data: Message 11 from user
+Message 8 from user
+Message 10 from user
+Message 9 from user
+Block was generating for 0 seconds
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -54,6 +182,130 @@ In this test, the program is running for a long time, more than 15 seconds. Most
   </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
+Block:
+Created by miner #1
+Id: 2
+Timestamp: 1722124509379
+Magic number: 0
+Hash of the previous block: 
+be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28
+Hash of the block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Block data: no messages
+Block was generating for 0 seconds
+
+Block:
+Created by miner #2
+Id: 3
+Timestamp: 1722124509397
+Magic number: 1
+Hash of the previous block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Hash of the block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Block data: Message 1 from user
+Block was generating for 0 seconds
+
+Block:
+Created by miner #0
+Id: 4
+Timestamp: 1722124509943
+Magic number: 363
+Hash of the previous block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Hash of the block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Block data: Message 2 from user
+Message 3 from user
+Message 5 from user
+Message 4 from user
+Block was generating for 0 seconds
+
+Block:
+Created by miner #3
+Id: 5
+Timestamp: 1722124519869
+Magic number: 1998
+Hash of the previous block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Hash of the block: 
+000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0
+Block data: Message 11 from user
+Message 8 from user
+Message 10 from user
+Message 9 from user
+Block was generating for 0 seconds
+
+Miner 0 mined 1 blocks
+Miner 1 mined 1 blocks
+Miner 2 mined 1 blocks
+Miner 3 mined 1 blocks
+Block:
+Created by miner #0
+Id: 1
+Timestamp: 1722124509360
+Magic number: 0
+Hash of the previous block: 
+0
+Hash of the block: 
+be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28
+Block data: no messages
+Block was generating for 10 seconds
+
+Block:
+Created by miner #1
+Id: 2
+Timestamp: 1722124509379
+Magic number: 0
+Hash of the previous block: 
+be439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28
+Hash of the block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Block data: no messages
+Block was generating for 10 seconds
+
+Block:
+Created by miner #2
+Id: 3
+Timestamp: 1722124509397
+Magic number: 1
+Hash of the previous block: 
+55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5
+Hash of the block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Block data: Message 1 from user
+Block was generating for 10 seconds
+
+Block:
+Created by miner #0
+Id: 4
+Timestamp: 1722124509943
+Magic number: 363
+Hash of the previous block: 
+0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0
+Hash of the block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Block data: Message 2 from user
+Message 3 from user
+Message 5 from user
+Message 4 from user
+Block was generating for 9 seconds
+
+Block:
+Created by miner #3
+Id: 5
+Timestamp: 1722124519869
+Magic number: 1998
+Hash of the previous block: 
+007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa
+Hash of the block: 
+000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0
+Block data: Message 11 from user
+Message 8 from user
+Message 10 from user
+Message 9 from user
+Block was generating for 0 seconds
+
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

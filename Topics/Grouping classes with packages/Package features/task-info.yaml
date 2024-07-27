@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: A package can contain another package.
+  - text: A package can contain two classes with the same name.
+  - text: A package can be empty.
+  - text: A package can contain a single class with a unique name in this package.
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/2041#comment
+status: Solved
+record: -1
+local_check: false

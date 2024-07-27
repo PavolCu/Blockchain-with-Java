@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://cogniterra.org/media/attachments/lesson/23032/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Fri, 14 Jun 2024 18:52:44 UTC"
+update_date: "Sat, 27 Jul 2024 16:47:11 UTC"
 stages:
   - id: 271
     step: 5413
@@ -314,18 +314,6 @@ topics:
     - title: Default methods
       theory_id: 11354
   3:
-    - title: Computer algorithms
-      theory_id: 16547
-    - title: "Big O: how to count it"
-      theory_id: 35901
-    - title: Complexity cases and how to use them
-      theory_id: 20084
-    - title: Pseudocode
-      theory_id: 15090
-    - title: Pseudocode basics
-      theory_id: 19510
-    - title: Complex constructions in pseudocode
-      theory_id: 20922
     - title: The Set interface
       theory_id: 3575
     - title: Standard functional interfaces

@@ -1,0 +1,16 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: java.lang
+  - text: all subpackages of org.hyperskill.java.packages
+  - text: org.hyperskill.java.packages
+  - text: the default package
+  - text: java.util
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/2255#comment
+status: Solved
+record: -1
+local_check: false
