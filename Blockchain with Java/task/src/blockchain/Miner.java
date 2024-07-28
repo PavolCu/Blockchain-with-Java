@@ -2,39 +2,26 @@ package blockchain;
 
 import java.util.List;
 
-public class Miner implements Runnable {
+public class Miner extends BlockchainTask {
     private final int id;
-    private final Blockchain blockchain;
-    private final Object lock;
 
     public Miner(int id, Blockchain blockchain, Object lock) {
+        super(blockchain, lock);
         this.id = id;
-        this.blockchain = blockchain;
-        this.lock = lock;
     }
 
     @Override
     public void run() {
-        while (blockchain.isMining() && blockchain.getSize() < 5) {
+        while (shouldContinue()) {
             Block lastBlock = blockchain.getLastBlock();
+            String prevHash = lastBlock == null ? "0" : lastBlock.getHash();
             List<String> messages = blockchain.getMessages();
-            int magicNumber = findMagicNumber(lastBlock.getHash(), blockchain.getN(), messages);
-            if (!blockchain.isMining()) {
-                break;
-            }
-            long generationTime = System.currentTimeMillis();
-            Block newBlock = new Block(lastBlock.getId() + 1, lastBlock.getHash(), id, magicNumber, generationTime, blockchain.getN(), messages);
-            if (blockchain.addBlock(newBlock)) {
-                System.out.println(newBlock);
-                synchronized (lock) {
+            int magicNumber = findMagicNumber(prevHash, blockchain.getN(), messages);
+            Block newBlock = new Block(blockchain.getSize() + 1, prevHash, id, magicNumber, System.currentTimeMillis(), blockchain.getN(), messages);
+            synchronized (lock) {
+                if (blockchain.addBlock(newBlock)) {
                     lock.notifyAll();
                 }
-            }
-        }
-        synchronized (lock) {
-            if (!blockchain.isMining() || blockchain.getSize() == 5) {
-                blockchain.stopMining();
-                lock.notifyAll();
             }
         }
     }
@@ -42,8 +29,8 @@ public class Miner implements Runnable {
     private int findMagicNumber(String prevHash, int N, List<String> messages) {
         int magicNumber = 0;
         String targetPrefix = "0".repeat(N);
-        String baseData = prevHash + messages.toString();
-        while (!StringUtil.applySha256(baseData + magicNumber).startsWith(targetPrefix)) {
+        StringBuilder baseData = new StringBuilder(prevHash).append(messages.toString());
+        while (!StringUtil.applySha256(baseData.toString() + magicNumber).startsWith(targetPrefix)) {
             magicNumber++;
             if (!blockchain.isMining()) {
                 break;

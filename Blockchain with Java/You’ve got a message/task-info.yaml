@@ -18,50 +18,15 @@ files:
   - name: src/blockchain/Block.java
     visible: true
     learner_created: true
+  - name: src/blockchain/MessageGenerator.java
+    visible: true
+    learner_created: true
+  - name: src/blockchain/BlockchainTask.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5416#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #1\n\nEvery block should contain at least 12 lines\
-    \ of data\n\nPlease find below the output of your program during this failed test.\n\
-    \n---\n\nBlock:\nCreated by miner #1\nId: 2\nTimestamp: 1722124509379\nMagic number:\
-    \ 0\nHash of the previous block: \nbe439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28\n\
-    Hash of the block: \n55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5\n\
-    Block data: no messages\nBlock was generating for 0 seconds\n\nBlock:\nCreated\
-    \ by miner #2\nId: 3\nTimestamp: 1722124509397\nMagic number: 1\nHash of the previous\
-    \ block: \n55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5\n\
-    Hash of the block: \n0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0\n\
-    Block data: Message 1 from user\nBlock was generating for 0 seconds\n\nBlock:\n\
-    Created by miner #0\nId: 4\nTimestamp: 1722124509943\nMagic number: 363\nHash\
-    \ of the previous block: \n0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0\n\
-    Hash of the block: \n007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa\n\
-    Block data: Message 2 from user\nMessage 3 from user\nMessage 5 from user\nMessage\
-    \ 4 from user\nBlock was generating for 0 seconds\n\nBlock:\nCreated by miner\
-    \ #3\nId: 5\nTimestamp: 1722124519869\nMagic number: 1998\nHash of the previous\
-    \ block: \n007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa\n\
-    Hash of the block: \n000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0\n\
-    Block data: Message 11 from user\nMessage 8 from user\nMessage 10 from user\n\
-    Message 9 from user\nBlock was generating for 0 seconds\n\nMiner 0 mined 1 blocks\n\
-    Miner 1 mined 1 blocks\nMiner 2 mined 1 blocks\nMiner 3 mined 1 blocks\nBlock:\n\
-    Created by miner #0\nId: 1\nTimestamp: 1722124509360\nMagic number: 0\nHash of\
-    \ the previous block: \n0\nHash of the block: \nbe439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28\n\
-    Block data: no messages\nBlock was generating for 10 seconds\n\nBlock:\nCreated\
-    \ by miner #1\nId: 2\nTimestamp: 1722124509379\nMagic number: 0\nHash of the previous\
-    \ block: \nbe439a6b420d80999a9159f7c450f38b6aba8220ca89b6679a9f4f4fa4574f28\n\
-    Hash of the block: \n55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5\n\
-    Block data: no messages\nBlock was generating for 10 seconds\n\nBlock:\nCreated\
-    \ by miner #2\nId: 3\nTimestamp: 1722124509397\nMagic number: 1\nHash of the previous\
-    \ block: \n55f0ebe6d46886aaef5e27c25de4fa0fff52d6fec82e8a20f3afdcc41f6bf7a5\n\
-    Hash of the block: \n0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0\n\
-    Block data: Message 1 from user\nBlock was generating for 10 seconds\n\nBlock:\n\
-    Created by miner #0\nId: 4\nTimestamp: 1722124509943\nMagic number: 363\nHash\
-    \ of the previous block: \n0a9343c2e6ff869e2aad54b7b84db899aaf7e97921f1d491ae57236d3e7654d0\n\
-    Hash of the block: \n007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa\n\
-    Block data: Message 2 from user\nMessage 3 from user\nMessage 5 from user\nMessage\
-    \ 4 from user\nBlock was generating for 9 seconds\n\nBlock:\nCreated by miner\
-    \ #3\nId: 5\nTimestamp: 1722124519869\nMagic number: 1998\nHash of the previous\
-    \ block: \n007f8f1bbd5f42dd8fef26d1a810f7399a1ca03561f4ef37043366044ebb9efa\n\
-    Hash of the block: \n000d3301ebd905ac38a989809172952f1ca425fb30918c8c68789d933bb876a0\n\
-    Block data: Message 11 from user\nMessage 8 from user\nMessage 10 from user\n\
-    Message 9 from user\nBlock was generating for 0 seconds"
-  time: "Sat, 27 Jul 2024 23:55:21 UTC"
+  message: Congratulations!
+  time: "Sun, 28 Jul 2024 21:39:54 UTC"
 record: 4
