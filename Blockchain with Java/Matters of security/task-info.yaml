@@ -6,6 +6,24 @@ files:
   - name: test/BlockchainTest.java
     visible: false
     learner_created: false
+  - name: src/blockchain/StringUtil.java
+    visible: true
+    learner_created: true
+  - name: src/blockchain/Blockchain.java
+    visible: true
+    learner_created: true
+  - name: src/blockchain/Miner.java
+    visible: true
+    learner_created: true
+  - name: src/blockchain/MessageGenerator.java
+    visible: true
+    learner_created: true
+  - name: src/blockchain/BlockchainTask.java
+    visible: true
+    learner_created: true
+  - name: src/blockchain/Block.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5417#comment
 status: Unchecked
 record: -1
