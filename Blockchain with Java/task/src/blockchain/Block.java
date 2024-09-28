@@ -9,40 +9,23 @@ public class Block {
     private final int magicNumber;
     private final long timestamp;
     private final String hash;
-    private final List<String> messages;
+    private final List<Transaction> transactions;
     private final int n;
-    private final long generationTime;
+    private final long generationTime = System.currentTimeMillis();
 
-    public Block(int id, String prevHash, int minerId, int magicNumber, long timestamp, int n, List<String> messages) {
+    public Block(int id, String prevHash, int minerId, int magicNumber, long timestamp, int n, List<Transaction> transactions) {
         this.id = id;
         this.prevHash = prevHash;
         this.minerId = minerId;
         this.magicNumber = magicNumber;
         this.timestamp = timestamp;
         this.n = n;
-        this.messages = List.copyOf(messages);
-        this.generationTime = System.currentTimeMillis() - timestamp;
-        this.hash = StringUtil.applySha256(id + prevHash + minerId + magicNumber + timestamp + n + messages.toString()); // MODIFIKÁCIA
-    }
-
-    public int getId() {
-        return id;
+        this.transactions = List.copyOf(transactions);
+        this.hash = StringUtil.applySha256(id + prevHash + minerId + magicNumber + timestamp + n + transactions);
     }
 
     public String getPrevHash() {
         return prevHash;
-    }
-
-    public int getMinerId() {
-        return minerId;
-    }
-
-    public int getMagicNumber() {
-        return magicNumber;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
     }
 
     public String getHash() {
@@ -53,28 +36,27 @@ public class Block {
         return n;
     }
 
-    public List<String> getMessages() {
-        return messages;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-
     public long getGenerationTime() {
-        return System.currentTimeMillis() - timestamp;
+        return generationTime;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Block: \n");
-        sb.append("Created by miner #").append(minerId).append("\n");
-        sb.append("Id: ").append(id).append("\n");
-        sb.append("Timestamp: ").append(timestamp).append("\n");
-        sb.append("Magic number: ").append(magicNumber).append("\n");
-        sb.append("Hash of the previous block: \n").append(prevHash).append("\n");
-        sb.append("Hash of the block: \n").append(hash).append("\n");
-        sb.append("Block data: ").append(messages.isEmpty() ? "no messages" : String.join("\n", messages)).append("\n");
-        sb.append("Block was generating for ").append(getGenerationTime() / 1000).append(" seconds\n");
-        sb.append("N was increased to ").append(n).append("\n");
-        return sb.toString();
+        long generationTime = System.currentTimeMillis() - timestamp;
+        return "Block: \n" +
+                "Created by: miner" + minerId + "\n" +
+                "miner" + minerId + " gets 100 VC\n" +
+                "Id: " + id + "\n" +
+                "Timestamp: " + timestamp + "\n" +
+                "Magic number: " + magicNumber + "\n" +
+                "Hash of the previous block: \n" + prevHash + "\n" +
+                "Hash of the block: \n" + hash + "\n" +
+                "Block data: " + (transactions.isEmpty() ? "No transactions" : transactions) + "\n" +
+                "Block was generating for " + (generationTime / 1000) + " seconds\n" +
+                "N was increased to " + n + "\n";
     }
 }

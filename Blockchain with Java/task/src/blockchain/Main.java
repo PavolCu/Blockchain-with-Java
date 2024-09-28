@@ -4,15 +4,15 @@ public class Main {
     public static void main(String[] args) {
         Blockchain blockchain = new Blockchain();
         final Object lock = new Object();
-        Thread[] minerThreads = new Thread[5];
-        Thread[] messageGenerators = new Thread[5];
+        Thread[] minerThreads = new Thread[15];
+        Thread[] messageGenerators = new Thread[15];
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             minerThreads[i] = new Thread(new Miner(i, blockchain, lock));
             minerThreads[i].start();
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             messageGenerators[i] = new Thread(new MessageGenerator(blockchain, lock));
             messageGenerators[i].start();
         }

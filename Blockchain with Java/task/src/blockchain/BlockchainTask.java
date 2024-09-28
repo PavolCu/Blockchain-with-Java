@@ -10,6 +10,6 @@ public abstract class BlockchainTask implements Runnable {
     }
 
     protected boolean shouldContinue() {
-        return blockchain.isMining() && blockchain.getSize() < 5;
+        return blockchain.isMining() && blockchain.getSize() < 15;
     }
 }

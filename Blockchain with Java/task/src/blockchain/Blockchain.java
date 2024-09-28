@@ -5,23 +5,22 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Blockchain {
-    private final List<String> messages = new ArrayList<>();
+    private final List<Transaction> pendingTransactions = new ArrayList<>(MAX_TRANSACTIONS);
     private final List<Block> blocks = new ArrayList<>();
     private final Lock blockLock = new ReentrantLock();
     private int N = 0;
     private volatile boolean isMining = true;
-    public final long miningTimeout = 12000;
-    private static final int MAX_MESSAGES = 4; // Limit the number of messages
+    private static final int MAX_TRANSACTIONS = 10; // Limit the number of transactions
 
     public Blockchain() {
-        // The first block, with no messages and a previous hash of "0"
+        // The first block, with no transactions and a previous hash of "0"
         blocks.add(new Block(1, "0", 0, 0, System.currentTimeMillis(), 0, new ArrayList<>()));
     }
 
-    public void addMessage(String message) {
-        synchronized (messages) {
-            if (messages.size() < MAX_MESSAGES) {
-                messages.add(message);
+    public void addTransaction(Transaction transaction) {
+        synchronized (pendingTransactions) {
+            if (pendingTransactions.size() < MAX_TRANSACTIONS) {
+                pendingTransactions.add(transaction);
             }
         }
     }
@@ -29,7 +28,7 @@ public class Blockchain {
     public boolean addBlock(Block block) {
         blockLock.lock();
         try {
-            if (blocks.size() >= 5) {
+            if (blocks.size() >= 15) {
                 stopMining();
                 return false;
             }
@@ -49,20 +48,20 @@ public class Blockchain {
             return newBlock.getPrevHash().equals("0");
         }
         Block lastBlock = blocks.get(blocks.size() - 1);
-        return newBlock.getPrevHash().equals(lastBlock.getHash()) && newBlock.getHash().startsWith("0".repeat(N));
+        return newBlock.getPrevHash().equals(lastBlock.getHash()) && newBlock.getHash().startsWith("0".repeat(newBlock.getN()));
     }
 
     private void adjustN(long generationTime) {
         if (generationTime < 1000) {
-            N++;
+            N = Math.min(N + 1, 5); // Limit the number of zeros to 5
         } else if (generationTime > 2000) {
-            N--;
+            N = Math.max(N - 1, 0);
         }
     }
 
-    public List<String> getMessages() {
-        synchronized (messages) {
-            return new ArrayList<>(messages);
+    public List<Transaction> getPendingTransactions() {
+        synchronized (pendingTransactions) {
+            return new ArrayList<>(pendingTransactions);
         }
     }
 
@@ -86,8 +85,19 @@ public class Blockchain {
         return N;
     }
 
-    public long getMiningTimeout() {
-        return miningTimeout;
+    public int getBalance(String user) {
+        int balance = 100; // Everyone starts with 100 virtual coins
+        for (Block block : blocks) {
+            for (Transaction transaction : block.getTransactions()) {
+                if (transaction.sender().equals(user)) {
+                    balance -= transaction.amount();
+                }
+                if (transaction.receiver().equals(user)) {
+                    balance += transaction.amount();
+                }
+            }
+        }
+        return balance;
     }
 
     @Override

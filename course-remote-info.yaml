@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://cogniterra.org/media/attachments/lesson/23032/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Tue, 30 Jul 2024 08:54:57 UTC"
+update_date: "Sat, 28 Sep 2024 13:15:13 UTC"
 stages:
   - id: 271
     step: 5413
@@ -19,10 +19,10 @@ stages:
     is_completed: true
   - id: 275
     step: 5417
-    is_completed: false
+    is_completed: true
   - id: 276
     step: 5418
-    is_completed: false
+    is_completed: true
 topics:
   0:
     - title: Modulo division
@@ -71,6 +71,16 @@ topics:
       theory_id: 3519
     - title: Integer types and operations
       theory_id: 3565
+    - title: Increment and decrement
+      theory_id: 5008
+    - title: Data types and their sizes
+      theory_id: 3532
+    - title: Type casting
+      theory_id: 3510
+    - title: Calling methods
+      theory_id: 10973
+    - title: Floating-point types
+      theory_id: 3517
     - title: Boolean type and operations. True and false
       theory_id: 3516
     - title: Comparing values. Relational operators
@@ -79,26 +89,18 @@ topics:
       theory_id: 3503
     - title: One-line condition with ternary operator
       theory_id: 3506
-    - title: Increment and decrement
-      theory_id: 5008
     - title: While and do-while loops
       theory_id: 3498
-    - title: For-loop
+    - title: For loop
       theory_id: 3505
     - title: Break and continue. Branching
       theory_id: 3507
-    - title: "Multiple conditions: switch"
-      theory_id: 3504
-    - title: Data types and their sizes
-      theory_id: 3532
-    - title: Type casting
-      theory_id: 3510
-    - title: Calling methods
-      theory_id: 10973
     - title: Declaring methods
       theory_id: 10982
     - title: Method "main"
       theory_id: 3489
+    - title: "Multiple conditions: switch"
+      theory_id: 3504
     - title: Functional decomposition
       theory_id: 10570
     - title: Overloading
@@ -109,6 +111,8 @@ topics:
       theory_id: 3511
     - title: Arrays as parameters
       theory_id: 3594
+    - title: Iterating over arrays
+      theory_id: 3602
     - title: Characters
       theory_id: 3514
     - title: String
@@ -125,8 +129,6 @@ topics:
       theory_id: 3552
     - title: NullPointerException
       theory_id: 1945
-    - title: Iterating over arrays
-      theory_id: 3602
     - title: What is object-oriented programming
       theory_id: 3614
     - title: What are bugs
@@ -222,10 +224,10 @@ topics:
       theory_id: 8956
     - title: Concept of design patterns
       theory_id: 3611
-    - title: Introduction to software architecture
-      theory_id: 15368
     - title: Multidimensional array
       theory_id: 1933
+    - title: Introduction to software architecture
+      theory_id: 15368
     - title: Formatted output
       theory_id: 7046
     - title: Writing files
